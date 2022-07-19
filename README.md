@@ -25,3 +25,6 @@ As I told, I'll use:
 
 
 -And maybe I'll implement Redis for caching the Querys and improve responses times, but it depends.
+
+
+-Stores procedures to trigger when a client returns the movie and the rent concludes.
