@@ -15,6 +15,14 @@ As you can see it's a ER Model, and the resultant relational model is the follow
 
 ![MovieRentalBd](https://user-images.githubusercontent.com/78714792/179668900-e3e5af16-f28e-4e1e-ad13-8841170739dc.png)
 
+I was having difficulties to code the joins in Eloquent but I catched the idea and I made a diagram so I can remember in future how this works
+and you can also support with it:
+
+
+![EloquentDgrmV2](https://user-images.githubusercontent.com/78714792/180081624-6cb7812d-7e31-4102-a124-df6e369285fd.png)
+
+
+
 
 As I told, I'll use: 
 
