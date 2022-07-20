@@ -14,6 +14,6 @@ class RepartoPeliculas extends Model
 
 
     public function getPeliculaAsociada(){
-        return $this->hasMany(Pelicula::class,'foreign_key');
+        return $this->hasMany(Pelicula::class,'idPelicula');
     }
 }

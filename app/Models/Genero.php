@@ -11,4 +11,8 @@ class Genero extends Model
     protected $timestamp=false;
     protected $table='genero';
     protected $primaryKey = 'idGenero';
+
+    public function movieBelongInverse(){
+        return $this->belongsTo(Pelicula::class,'idGenero');
+    }
 }

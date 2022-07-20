@@ -11,4 +11,8 @@ class Director extends Model
     protected $timestamp=false;
     protected $table='director';
     protected $primaryKey = 'idDirector';
+
+    public function directorBelongInverse(){
+        return $this->belongsTo(Pelicula::class,'idDirector');
+    }
 }

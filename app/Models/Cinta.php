@@ -13,6 +13,6 @@ class Cinta extends Model
     protected $primaryKey = 'numeroCinta';
 
     public function getContenido(){
-        return $this->hasOne(Pelicula::class,'foreign_key');
+        return $this->hasOne(Pelicula::class,'idPelicula');
     }
 }

@@ -13,6 +13,9 @@ class Socios extends Model
     protected $primaryKey = 'codigoSocio';
 
     public function getListaEspera(){
-        return $this->belongsTo(ListaEspera::class,'foreign_key','socio_fk');
+        /*First string parameter is the key that is identified
+        as foreign key, second parameter is the key in case there is
+        no primary key from the other entity */
+        return $this->belongsTo(ListaEspera::class,'codigoSocio','socio_fk');
     }
 }

@@ -12,10 +12,10 @@ class ListaReparto extends Model
     protected $table='listareparto';
 
     public function getActoresVinculados(){
-        return $this->hasMany(Actor::class,'foreign_key');
+        return $this->hasMany(Actor::class,'idActor');
     }
 
     public function getRepartoVinculado(){
-        return $this->hasMany(RepartoPeliculas::class,'foreign_key');
+        return $this->hasMany(RepartoPeliculas::class,'idReparto');
     }
 }

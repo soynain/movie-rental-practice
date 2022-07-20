@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Models\Cinta;
 use App\Models\ListaEspera;
+use App\Models\Pelicula;
 use App\Models\Socios;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,14 +19,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-   /* $pruebaJoin = ListaEspera::select('*')
-    ->join('socios','ListaEspera.socio_fk','Socios.codigoSocio')
-    ->get();*/
-    //the commented line works but im not interested in that approach
-    $pruebaJoin=Socios::find(1)->getListaEspera()
-    ->where('socio_fk',1)->get();
-    return response()->json([
-        'result' => $pruebaJoin
-    ]);
-});
+
+
+Route::post('/v1/login',[AuthController::class,'login']);
+
+
