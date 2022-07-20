@@ -18,7 +18,9 @@ As you can see it's a ER Model, and the resultant relational model is the follow
 I was having difficulties to code the joins in Eloquent but I catched the idea and I made a diagram so I can remember in future how this works
 and you can also support with it:
 
-![EloquentExplaining](https://user-images.githubusercontent.com/78714792/180081530-12efa183-6421-4a15-b245-24787ba2b641.png)
+
+![EloquentDgrmV2](https://user-images.githubusercontent.com/78714792/180081624-6cb7812d-7e31-4102-a124-df6e369285fd.png)
+
 
 
 
