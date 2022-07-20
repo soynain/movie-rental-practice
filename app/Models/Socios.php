@@ -11,4 +11,8 @@ class Socios extends Model
     protected $timestamp=false;
     protected $table='socios';
     protected $primaryKey = 'codigoSocio';
+
+    public function getListaEspera(){
+        return $this->belongsTo(ListaEspera::class,'foreign_key','socio_fk');
+    }
 }
