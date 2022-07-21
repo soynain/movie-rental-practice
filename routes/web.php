@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PeliculaController;
 use App\Models\Cinta;
 use App\Models\ListaEspera;
 use App\Models\Pelicula;
@@ -18,9 +19,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::controller(AuthController::class)->group(function(){
+    Route::post('/v1/login','login');
+    Route::post('/v1/register','register');
+});
 
+Route::controller(PeliculaController::class)->group(function(){
+    Route::get('/v1/getAllPeliculas','getMovies');
+    Route::get('/v1/getMovie/{titulo}');
+});
 
-
-Route::post('/v1/login',[AuthController::class,'login']);
 
 
