@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CintaController;
+use App\Http\Controllers\ListaEsperaController;
 use App\Http\Controllers\PeliculaController;
 use App\Http\Controllers\PrestamosActualesController;
 use App\Http\Controllers\PrestamosFinalizadosController;
@@ -48,6 +49,11 @@ Route::controller(PrestamosActualesController::class)->group(function(){
 Route::controller(PrestamosFinalizadosController::class)->group(function(){
     Route::post('/v1/prestamo-finalizado','getPrestamosFinalizadosByFecha');
     Route::get('/v1/prestamo-finalizado/{codigoSocio}','getPrestamosFinalizadosBySocioId');
+});
+
+Route::controller(ListaEsperaController::class)->group(function(){
+    Route::get('/v1/getListaEspera/{codigoSocio}','getByPeliculaNombre');
+    Route::get('/v1/getAllListaEspera','getAllListaEspera');
 });
 
 

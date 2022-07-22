@@ -28,15 +28,21 @@ class PrestamosFinalizadosController extends Controller
     public function getPrestamosFinalizadosBySocioId($codigoSocio)
     {
         $querySocioDatosBasicos = Socios::find($codigoSocio);
-        $queryCintaFinalizado = PrestamosFinalizados::where('socio_fk', $codigoSocio)->first();
-
+        $queryCintaFinalizado = PrestamosFinalizados::where('socio_fk', $codigoSocio)->get();
+        $arrayPrestamos = [];
+        foreach ($queryCintaFinalizado as $cintaVigente) {
+            array_push(
+                $arrayPrestamos,
+                array_merge(
+                    json_decode($cintaVigente->getCintaRentada()->first()->getContenido()->first(), true),
+                    json_decode($cintaVigente->first(), true)
+                )
+            );
+        }
         return response()->json([
             'Datos socio' => $querySocioDatosBasicos,
-            'Prestamos Actuales' => array_merge(
-                json_decode($queryCintaFinalizado->getCintaRentada
-                    ->first()->getContenido()->first(), true),
-                json_decode($queryCintaFinalizado->first(), true)
-            )
+            'Prestamos Actuales' => $arrayPrestamos
+            
         ]);
     }
 }

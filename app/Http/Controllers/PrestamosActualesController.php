@@ -19,7 +19,7 @@ class PrestamosActualesController extends Controller
             ->getSocios()
             ->first();
         return response()->json([
-            'Datos socio'=>$querySocioDatosBasicos,
+            'Datos socio' => $querySocioDatosBasicos,
             'Prestamos Actuales' => PrestamosActuales::where('fechaInicioPrestamo', $fechaInicio->fechaInicio)->get()
         ]);
     }
@@ -27,14 +27,20 @@ class PrestamosActualesController extends Controller
     public function getPrestamosActualesBySocioId($codigoSocio)
     {
         $querySocioDatosBasicos = Socios::find($codigoSocio);
-        $queryCintaVigente = PrestamosActuales::where('socio_fk', $codigoSocio)->first();
+        $queryCintaVigente = PrestamosActuales::where('socio_fk', $codigoSocio)->get();
+        $arrayPrestamos = [];
+        foreach ($queryCintaVigente as $cintaVigente) {
+            array_push(
+                $arrayPrestamos,
+                array_merge(
+                    json_decode($cintaVigente->getCintaRentada()->first()->getContenido()->first(), true),
+                    json_decode($cintaVigente->first(), true)
+                )
+            );
+        }
         return response()->json([
-            'Datos socio'=>$querySocioDatosBasicos,
-            'Prestamos Actuales' => array_merge(
-                json_decode($queryCintaVigente->getCintaRentada
-                    ->first()->getContenido()->first(), true),
-                json_decode($queryCintaVigente->first(), true)
-            )
+            'Datos socio' => $querySocioDatosBasicos,
+            'Prestamos Actuales' => $arrayPrestamos
         ]);
     }
 }
