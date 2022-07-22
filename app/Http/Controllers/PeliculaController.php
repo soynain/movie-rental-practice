@@ -2,30 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\JwtAuth;
 use App\Models\Pelicula;
 use Illuminate\Http\Request;
 
 class PeliculaController extends Controller
 {
-    public function __construct()
+   /* public function __construct()
     {
-        $this->middleware('api');
-    }
+        $this->middleware(JwtAuth::class);
+    }*/
 
     public function getMovies()
     {
-        if(auth('api')->check()){
-            return Pelicula::all();
-        }
-        return response()->json([
-            'Status'=>'Unauthorized'
-        ]);
+       
+        return Pelicula::all();
+        
     }
 
-    public function getPeliculaByNombre(Request $titulo)
+    public function getPeliculaByNombre($titulo)
     {
         if ($titulo !== null) {
-            $query = Pelicula::where('nombre', $titulo->titulo)->first();
+            $query = Pelicula::where('nombre', $titulo)->first();
             return $query!==null?$query:response()->json(['Status'=>'Not movie found'],404);
         }
         return response()->json([

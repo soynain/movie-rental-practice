@@ -15,10 +15,10 @@ class ListaEspera extends Model
 
     public function getSocio():HasMany{
         /*this is the foreign key*/
-        return $this->hasMany(Socios::class,'codigoSocio');
+        return $this->hasMany(Socios::class,'codigoSocio','socio_fk');
     }
 
     public function getPeliculaAEsperar(){
-        return $this->hasMany(Pelicula::class,'idPelicula');
+        return $this->hasMany(Pelicula::class,'idPelicula','pelicula_fk');
     }
 }

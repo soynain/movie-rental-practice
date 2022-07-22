@@ -2,43 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\JwtAuth;
+use App\Models\Pelicula;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth as FacadesJWTAuth;
 
 class AuthController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('api', ['except' => ['login']]);
+        $this->middleware(JwtAuth::class)->except(['login','register']);
     }
 
     public function login(Request $request)
     {
-        //Log::info('das');
         $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
         $credentials = $request->only('email', 'password');
 
-        $token = auth('api')->attempt($credentials);
-        if (!$token) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'No autorizado',
-            ], 401);
-        }
-
-        $user = Auth::user();
+        $token = Auth::guard('api')->attempt($credentials);
+        if (!$token) return response()->json(['status' => 'error','message' => 'Wrong credentials',], 404);
+        /* Intellisense doesnt detect factory method but still works*/
+        $user =Auth::guard('api')->user();
         return response()->json([
             'status' => 'success',
             'user' => $user,
             'authorization' => [
-                'token' => $token,
-                'type' => 'bearer',
+                'access_token' => $token,
+                'token_type' => 'bearer',
+                'expires_in' => Auth::guard('api')->factory()->getTTL()*60
             ]
         ]);
     }

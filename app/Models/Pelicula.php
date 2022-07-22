@@ -13,11 +13,11 @@ class Pelicula extends Model
     protected $primaryKey = 'idPelicula';
 
     public function getGenero(){
-        return $this->hasMany(Genero::class,'idGenero');
+        return $this->hasMany(Genero::class,'idGenero','genero_fk');
     }
 
     public function getDirector(){
-        return $this->hasMany(Director::class,'idDirector');
+        return $this->hasMany(Director::class,'idDirector','director_fk');
     }
 
     /*when you declare the inverse from a relation, you must set the primary key from

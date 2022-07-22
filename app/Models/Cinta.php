@@ -13,6 +13,17 @@ class Cinta extends Model
     protected $primaryKey = 'numeroCinta';
 
     public function getContenido(){
-        return $this->hasOne(Pelicula::class,'idPelicula');
+        return $this->hasOne(Pelicula::class,'idPelicula','contenido_fk');
+    }
+
+    /*Because PrestamosActuales doesnt have a primary key, we
+    reforce the relationship indicating the foreign key
+    in the third parameter*/
+    public function VerificarDisponibilidadCinta(){
+        return $this->belongsTo(PrestamosActuales::class,'numeroCinta');
+    }
+
+    public function HistorialPrestamosFinalizados(){
+        return $this->belongsTo(PrestamosFinalizados::class,'numeroCinta');
     }
 }

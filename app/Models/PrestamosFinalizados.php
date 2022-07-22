@@ -12,10 +12,10 @@ class PrestamosFinalizados extends Model
     protected $table='prestamosfinalizados';
 
     public function getSocios(){
-        return $this->hasMany(Socios::class,'codigoSocio');
+        return $this->hasMany(Socios::class,'codigoSocio','socio_fk');
     }
 
     public function getCintaRentada(){
-        return $this->hasOne(Cinta::class,'numeroCinta');
+        return $this->hasOne(Cinta::class,'numeroCinta','cinta_fk');
     }
 }
