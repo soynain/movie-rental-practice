@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\JwtAuth;
 use App\Models\PrestamosFinalizados;
 use App\Models\Socios;
 use Illuminate\Http\Request;
 
 class PrestamosFinalizadosController extends Controller
 {
-    /*public function __constructor(){
+    public function __construct(){
         $this->middleware(JwtAuth::class);
-    }*/
+    }
 
     public function getPrestamosFinalizadosByFecha(Request $fechaFin)
     {

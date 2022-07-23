@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class PrestamosActuales extends Model
 {
     use HasFactory;
-    protected $timestamp=false;
+    public $timestamps = false;
     protected $table='prestamosactuales';
+    protected $fillable=['socio_fk','cinta_fk','fechaInicioPrestamo'];
 
     public function getSocios(){
         return $this->hasMany(Socios::class,'codigoSocio','socio_fk');

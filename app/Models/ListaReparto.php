@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ListaReparto extends Model
 {
     use HasFactory;
-    protected $timestamp=false;
+    public $timestamps = false;
     protected $table='listareparto';
 
     public function getActoresVinculados(){

@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class ListaEsperaController extends Controller
 {
-    /* public function __construct()
+     public function __construct()
     {
         $this->middleware(JwtAuth::class);
-    }*/
+    }
 
     public function getAllListaEspera(){
         $queryAllListaEspera=ListaEspera::all();

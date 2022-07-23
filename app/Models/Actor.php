@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Actor extends Model
 {
     use HasFactory;
-    protected $timestamp=false;
+    public $timestamps = false;
     protected $table='actor';
     protected $primaryKey = 'idActor';
     

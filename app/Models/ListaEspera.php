@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class ListaEspera extends Model
 {
     use HasFactory;
-    protected $timestamp=false;
+    public $timestamps = false;
     protected $table='listaespera';
    
 

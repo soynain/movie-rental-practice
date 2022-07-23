@@ -25,7 +25,7 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
         $credentials = $request->only('email', 'password');
-
+        //Auth::guard('api')->factory()->setTTL(1);
         $token = Auth::guard('api')->attempt($credentials);
         if (!$token) return response()->json(['status' => 'error','message' => 'Wrong credentials',], 404);
         /* Intellisense doesnt detect factory method but still works*/
@@ -36,7 +36,7 @@ class AuthController extends Controller
             'authorization' => [
                 'access_token' => $token,
                 'token_type' => 'bearer',
-                'expires_in' => Auth::guard('api')->factory()->getTTL()*60
+                'expires_in' => Auth::guard('api')->factory()->getTTL()
             ]
         ]);
     }

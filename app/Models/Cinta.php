@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cinta extends Model
 {
     use HasFactory;
-    protected $timestamp=false;
+    public $timestamps = false;
     protected $table='cinta';
     protected $primaryKey = 'numeroCinta';
 

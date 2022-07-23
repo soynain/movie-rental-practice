@@ -9,7 +9,7 @@ class RepartoPeliculas extends Model
 {
     use HasFactory;
     protected $timestamp=false;
-    protected $table='repartopeliculas';
+    public $timestamps = false;
     protected $primaryKey = 'idReparto';
 
 

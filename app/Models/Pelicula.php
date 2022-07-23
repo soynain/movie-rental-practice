@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Pelicula extends Model
 {
     use HasFactory;
-    protected $timestamp=false;
+    public $timestamps = false;
     protected $table='pelicula';
     protected $primaryKey = 'idPelicula';
+    protected $fillable=['nombre','genero_fk','director_fk'];
 
     public function getGenero(){
         return $this->hasMany(Genero::class,'idGenero','genero_fk');

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Genero extends Model
 {
     use HasFactory;
-    protected $timestamp=false;
+    public $timestamps = false;
     protected $table='genero';
     protected $primaryKey = 'idGenero';
 

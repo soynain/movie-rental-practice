@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 
 class CintaController extends Controller
 {
-   /* public function __constructor(){
+    public function __construct(){
         $this->middleware(JwtAuth::class);
-    }*/
+    }
 
     public function getCintaByNumero($numeroCinta){
         return Cinta::where('numeroCinta',$numeroCinta)->first();

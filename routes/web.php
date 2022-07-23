@@ -34,6 +34,7 @@ Route::controller(AuthController::class)->group(function(){
 Route::controller(PeliculaController::class)->group(function(){
     Route::get('/v1/getAllPeliculas','getMovies');
     Route::get('/v1/getMovie/{titulo}','getPeliculaByNombre');
+    Route::post('/v1/newmovie','addPelicula');
 });
 
 Route::controller(CintaController::class)->group(function(){
@@ -44,6 +45,8 @@ Route::controller(CintaController::class)->group(function(){
 Route::controller(PrestamosActualesController::class)->group(function(){
     Route::post('/v1/prestamo-actual','getPrestamosActualesByFecha');
     Route::get('/v1/prestamo-actual/{codigoSocio}','getPrestamosActualesBySocioId');
+    Route::post('/v1/newprestamo','addNewPrestamo');
+    Route::post('/v1/finalizarprestamo','concluirPrestamo');
 });
 
 Route::controller(PrestamosFinalizadosController::class)->group(function(){
