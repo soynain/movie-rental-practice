@@ -11,6 +11,8 @@ class Socios extends Model
     public $timestamps = false;
     protected $table='socios';
     protected $primaryKey = 'codigoSocio';
+    protected $fillable=['nombre','direccion','telefono'];
+    
 
     public function getListaEspera(){
         /*First string parameter is the key that is identified

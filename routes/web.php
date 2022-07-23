@@ -6,6 +6,7 @@ use App\Http\Controllers\ListaEsperaController;
 use App\Http\Controllers\PeliculaController;
 use App\Http\Controllers\PrestamosActualesController;
 use App\Http\Controllers\PrestamosFinalizadosController;
+use App\Http\Controllers\SociosController;
 use App\Models\Cinta;
 use App\Models\ListaEspera;
 use App\Models\Pelicula;
@@ -25,6 +26,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::controller(SociosController::class)->group(function(){
+    Route::post('/v1/socio/registrar','registrarSocio');
+    Route::post('/v1/socio/baja/{codigoSocio}','bajaSocio');
+});
+
 Route::controller(AuthController::class)->group(function(){
     Route::post('/v1/login','login');
     Route::post('/v1/register','register');
@@ -57,6 +63,11 @@ Route::controller(PrestamosFinalizadosController::class)->group(function(){
 Route::controller(ListaEsperaController::class)->group(function(){
     Route::get('/v1/getListaEspera/{codigoSocio}','getByPeliculaNombre');
     Route::get('/v1/getAllListaEspera','getAllListaEspera');
+    Route::post('/v1/new-cliente','addEsperaCliente');
+    Route::post(
+        '/v1/remove-cliente-espera/{codigoSocio}/{peliculaFk}',
+        'dropEsperaCliente'
+    );
 });
 
 

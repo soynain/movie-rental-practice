@@ -11,6 +11,7 @@ class ListaEspera extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table='listaespera';
+    protected $fillable=['socio_fk','pelicula_fk'];
    
 
     public function getSocio():HasMany{

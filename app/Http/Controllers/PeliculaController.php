@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class PeliculaController extends Controller
 {
-    public function __construct()
+   public function __construct()
     {
         $this->middleware(JwtAuth::class);
     }

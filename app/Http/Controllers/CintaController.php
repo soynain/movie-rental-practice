@@ -27,7 +27,6 @@ class CintaController extends Controller
                 array('genero_nombre'=>$cintaAndPelicula->getGenero->first()->nombre),
                 array('director_nombre'=>$cintaAndPelicula->getDirector->first()->nombre)*/
             ),
-            
         ]);
     }
 

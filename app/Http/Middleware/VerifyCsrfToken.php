@@ -17,6 +17,9 @@ class VerifyCsrfToken extends Middleware
         '/v1/prestamo-finalizado',
         '/v1/newmovie',
         '/v1/newprestamo',
-        '/v1/finalizarprestamo'
+        '/v1/finalizarprestamo',
+        '/v1/new-cliente',
+        '/v1/socio/*',
+        '/v1/remove-cliente-espera/*'
     ];
 }
