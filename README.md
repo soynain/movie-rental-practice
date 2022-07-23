@@ -22,7 +22,10 @@ and you can also support with it:
 ![EloquentDgrmV2](https://user-images.githubusercontent.com/78714792/180081624-6cb7812d-7e31-4102-a124-df6e369285fd.png)
 
 
+I tested one of the endpoints (/v1/getAllMovies) on JMeter, Laptop is 4gb, intel i3-6006u 2.0 ghz, the results are pretty positive
+![image](https://user-images.githubusercontent.com/78714792/180618447-b1e68a34-3884-4246-824f-a53bd31db372.png)
 
+Laravel with my equipment can handle 100.000+ requests per minute, so a small digital ocean dropplet can be enough for small-medium proyects
 
 As I told, I'll use: 
 
